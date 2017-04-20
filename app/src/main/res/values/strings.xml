@@ -24,5 +24,6 @@
 
     <!--购票-->
     <string name="buy_ticket_title_movie">电影</string>
+    <string name="buy_ticket_title_cinema">影院</string>
 
 </resources>

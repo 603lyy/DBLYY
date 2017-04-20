@@ -12,6 +12,6 @@
         android:color="@color/color_balck_2" />
 
     <corners
-        android:radius="@dimen/radius_size_medium"/>
+        android:radius="@dimen/radius_size_super_large"/>
 
 </shape>
