@@ -1,0 +1,39 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="widget_height">10dp</dimen>
+
+    <dimen name="imageview_default_size">25dp</dimen>
+
+    <!--textview通用-->
+    <dimen name="textview_height_normal">30dp</dimen>
+    <dimen name="textview_height_small">20dp</dimen>
+
+    <!--通用margin-->
+    <dimen name="margin_large">50dp</dimen>
+    <dimen name="margin_medium">40dp</dimen>
+    <dimen name="margin_normal">30dp</dimen>
+    <dimen name="margin_small">20dp</dimen>
+    <dimen name="margin_little_small">10dp</dimen>
+    <dimen name="margin_super_small">5dp</dimen>
+
+    <!--通用margin-->
+    <dimen name="padding_large">50dp</dimen>
+    <dimen name="padding_medium">40dp</dimen>
+    <dimen name="padding_normal">30dp</dimen>
+    <dimen name="padding_small">20dp</dimen>
+    <dimen name="padding_little_small">10dp</dimen>
+    <dimen name="padding_super_small">5dp</dimen>
+
+    <dimen name="common_dp_1">1dp</dimen>
+
+    <!-- 半径 -->
+    <dimen name="radius_size_large">15dp</dimen>
+    <dimen name="radius_size_medium">10dp</dimen>
+    <dimen name="radius_size_min">6dp</dimen>
+    <dimen name="radius_size_small">3dp</dimen>
+    <dimen name="radius_size_limit_small">1dp</dimen>
+
+</resources>
