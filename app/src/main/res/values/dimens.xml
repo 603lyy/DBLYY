@@ -28,6 +28,7 @@
     <dimen name="padding_super_small">5dp</dimen>
 
     <dimen name="common_dp_1">1dp</dimen>
+    <dimen name="common_dp_3">3dp</dimen>
 
     <!-- 半径 -->
     <dimen name="radius_size_large">15dp</dimen>
