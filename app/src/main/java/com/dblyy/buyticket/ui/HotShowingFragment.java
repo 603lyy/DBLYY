@@ -1,4 +1,4 @@
-package com.dblyy.buyticket;
+package com.dblyy.buyticket.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -85,7 +85,7 @@ public class HotShowingFragment extends BaseFragment {
             selectedTitleList.add(aTnameArray);
 
         for (int i = 0; i < selectedTitleList.size(); i++) {
-            fragmentList.add(BuyTicketListFragment.newInstance(i + ""));
+            fragmentList.add(ShowingListFragment.newInstance(i + ""));
         }
         FragmentAdapter fAdapter = new FragmentAdapter(this.getChildFragmentManager(), fragmentList);
         viewpager.setAdapter(fAdapter);

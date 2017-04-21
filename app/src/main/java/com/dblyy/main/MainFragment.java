@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.blankj.utilcode.utils.ToastUtils;
 import com.dblyy.R;
 import com.dblyy.discover.DiscoverFragment;
-import com.dblyy.buyticket.HotShowingFragment;
+import com.dblyy.buyticket.ui.HotShowingFragment;
 import com.dblyy.user.UserFragment;
 import com.dblyy.widget.fragment.BaseFragment;
 
