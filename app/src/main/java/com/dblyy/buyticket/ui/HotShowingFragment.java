@@ -87,7 +87,7 @@ public class HotShowingFragment extends BaseFragment {
         for (int i = 0; i < selectedTitleList.size(); i++) {
             fragmentList.add(ShowingListFragment.newInstance(i + ""));
         }
-        FragmentAdapter fAdapter = new FragmentAdapter(this.getChildFragmentManager(), fragmentList);
+        FragmentAdapter fAdapter = new FragmentAdapter(this.getChildFragmentManager(),fragmentList);
         viewpager.setAdapter(fAdapter);
         viewpager.setOffscreenPageLimit(2);
 

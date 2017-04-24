@@ -3,7 +3,6 @@ package com.dblyy.util.retrofit;
 import io.reactivex.subscribers.DefaultSubscriber;
 
 /**
- * author: LMJ
  * date: 2016/9/1
  */
 public abstract class HttpSubscriber<T> extends DefaultSubscriber<T> {
