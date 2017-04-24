@@ -25,5 +25,7 @@
     <!--购票-->
     <string name="buy_ticket_title_movie">电影</string>
     <string name="buy_ticket_title_cinema">影院</string>
+    <string name="buy_ticket_show_time">%1$s月%2$s日上映</string>
+    <string name="buy_ticket_cinema">今日%1$s家影院上映%2$s场</string>
 
 </resources>
