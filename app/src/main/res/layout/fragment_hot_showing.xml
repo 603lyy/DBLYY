@@ -61,9 +61,9 @@
     </RelativeLayout>
 
     <net.lucode.hackware.magicindicator.MagicIndicator
-        android:id="@+id/magic_indicator"
+        android:id="@+id/magic_indicator_buy"
         android:layout_width="match_parent"
-        android:background="@color/color_balck_1"
+        android:background="@color/color_black_1"
         android:layout_height="50dp" />
 
     <android.support.v4.view.ViewPager

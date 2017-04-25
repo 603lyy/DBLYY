@@ -1,7 +1,6 @@
 package com.dblyy.buyticket.ui;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +19,7 @@ import com.dblyy.buyticket.mvp.presenter.impl.BuyShowingListPresenterImpl;
 import com.dblyy.buyticket.mvp.view.IShowingListFragment;
 import com.dblyy.widget.fragment.BaseFragment;
 import com.dblyy.widget.recyclerview.CustomLoadMoreView;
+import com.dblyy.widget.recyclerview.DividerItemDecoration;
 import com.dblyy.widget.recyclerview.animation.CustomAnimation;
 
 import java.util.ArrayList;
@@ -95,12 +95,7 @@ public class ShowingListFragment extends BaseFragment implements IShowingListFra
 
         recyclerview.setLayoutManager(new LinearLayoutManager(context));
         recyclerview.setAdapter(sListAdapter);
-        recyclerview.addItemDecoration(new RecyclerView.ItemDecoration() {
-            @Override
-            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-                outRect.top = 1;
-            }
-        });
+        recyclerview.addItemDecoration(new DividerItemDecoration(context,DividerItemDecoration.VERTICAL_LIST));
     }
 
 

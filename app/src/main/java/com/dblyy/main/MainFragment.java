@@ -98,6 +98,8 @@ public class MainFragment extends BaseFragment {
 
     private void initView() {
 
+        CommonNavigator navigator;
+
         //Fragment相关
         fragments[0] = HotShowingFragment.newInstance();
         fragments[1] = DiscoverFragment.newInstance();
@@ -110,7 +112,7 @@ public class MainFragment extends BaseFragment {
 
         current = 0;
 
-        CommonNavigator navigator = new CommonNavigator(context);
+        navigator = new CommonNavigator(context);
         navigator.setAdjustMode(true);
         navigator.setFollowTouch(true);
         navigator.setAdapter(new CommonNavigatorAdapter() {

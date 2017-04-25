@@ -40,7 +40,7 @@ public class HotShowingFragment extends BaseFragment {
     TextView tv_movie;
     @BindView(R.id.tv_cinema)
     TextView tv_cinema;
-    @BindView(R.id.magic_indicator)
+    @BindView(R.id.magic_indicator_buy)
     MagicIndicator magic_indicator;
     @BindView(R.id.viewpager)
     ViewPager viewpager;
@@ -108,7 +108,7 @@ public class HotShowingFragment extends BaseFragment {
                 ClipPagerTitleView clipPagerTitleView = new ClipPagerTitleView(context);
                 clipPagerTitleView.setTextSize(SizeUtils.sp2px(18));
                 clipPagerTitleView.setText(selectedTitleList.get(i));
-                clipPagerTitleView.setBackgroundResource(R.color.color_balck_1);
+                clipPagerTitleView.setBackgroundResource(R.color.color_black_1);
                 clipPagerTitleView.setClipColor(ContextCompat.getColor(context, R.color.color_text_white));
                 clipPagerTitleView.setTextColor(ContextCompat.getColor(context, R.color.color_text_subheading));
                 clipPagerTitleView.setOnClickListener(v -> viewpager.setCurrentItem(i));

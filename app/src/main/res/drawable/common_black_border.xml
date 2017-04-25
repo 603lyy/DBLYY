@@ -9,7 +9,7 @@
 
     <stroke
         android:width="@dimen/common_dp_1"
-        android:color="@color/color_black_1" />
+        android:color="@color/color_black_2" />
 
     <corners
         android:radius="@dimen/radius_size_super_large"/>
