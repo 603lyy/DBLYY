@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DBLYY</string>
+    <string name="app_name">电影</string>
     <!--通用-->
     <string name="progress_loading">正在努力工作，请稍等…</string>
     <string name="explore">发现</string>

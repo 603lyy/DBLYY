@@ -1,6 +1,7 @@
 package com.dblyy.buyticket.ui;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -91,8 +92,15 @@ public class ShowingListFragment extends BaseFragment implements IShowingListFra
         sListAdapter.setAutoLoadMoreSize(BuyTicketAPI.LIMIT);//加载更多的触发条件
         sListAdapter.setOnLoadMoreListener(this, recyclerview);//加载更多回调监听
         sListAdapter.setLoadMoreView(new CustomLoadMoreView());
+
         recyclerview.setLayoutManager(new LinearLayoutManager(context));
         recyclerview.setAdapter(sListAdapter);
+        recyclerview.addItemDecoration(new RecyclerView.ItemDecoration() {
+            @Override
+            public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+                outRect.top = 1;
+            }
+        });
     }
 
 

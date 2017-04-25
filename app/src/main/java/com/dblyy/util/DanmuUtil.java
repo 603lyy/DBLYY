@@ -1,8 +1,6 @@
 package com.dblyy.util;
 
 /**
- * author: liminjie
- * date: 2017/2/27
  * desc: DanmuUtil弹幕数据包生成工具类
  */
 
@@ -16,12 +14,12 @@ public class DanmuUtil {
     public final static int IGNORE_BYTE_LENGTH = 16;//弹幕消息体忽略的字节数
     public final static int MAX_AUTO_CONNECT_TIME = 5;//自动断线重连次数
 
-    /**
-     * 建立连接请求数据包
-     *
-     * @param bean
-     * @return
-     */
+//    /**
+//     * 建立连接请求数据包
+//     *
+//     * @param bean
+//     * @return
+//     */
 //    public static byte[] getConnectData(LivePandaBean.DataBean bean) {
 //        String contentMsg = "u:" + bean.getRid() + "" +
 //                "@" + bean.getAppid() + "" +

@@ -16,6 +16,6 @@ public class RootActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root);
 
-        loadRootFragment(R.id.layout_container, MainFragment.newInstance());
+        loadRootFragment(R.id.layout_container_root, MainFragment.newInstance());
     }
 }

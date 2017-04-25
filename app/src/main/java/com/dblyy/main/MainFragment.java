@@ -2,6 +2,7 @@ package com.dblyy.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -130,13 +131,13 @@ public class MainFragment extends BaseFragment {
                     @Override
                     public void onSelected(int i, int i1) {
                         tab_btn.setBackgroundResource(pressedResId[i]);
-                        tab_name.setTextColor(getResources().getColor(R.color.color_primary_text));
+                        tab_name.setTextColor(ContextCompat.getColor(context,R.color.color_primary_text));
                     }
 
                     @Override
                     public void onDeselected(int i, int i1) {
                         tab_btn.setBackgroundResource(normalResId[i]);
-                        tab_name.setTextColor(getResources().getColor(R.color.color_secondary_text));
+                        tab_name.setTextColor(ContextCompat.getColor(context,R.color.color_secondary_text));
                     }
 
                     @Override

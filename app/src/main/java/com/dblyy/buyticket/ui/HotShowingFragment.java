@@ -49,11 +49,7 @@ public class HotShowingFragment extends BaseFragment {
 
     private List<String> selectedTitleList = new ArrayList<>();
 
-    private String[] nameArray;
-
     private Context context;
-
-    private CommonNavigator navigator;
 
     public static HotShowingFragment newInstance() {
         return new HotShowingFragment();
@@ -79,6 +75,8 @@ public class HotShowingFragment extends BaseFragment {
     }
 
     private void initView() {
+        CommonNavigator navigator;
+        String[] nameArray;
 
         nameArray = getResources().getStringArray(R.array.buy_type_tname);
         for (String aTnameArray : nameArray)
@@ -87,7 +85,7 @@ public class HotShowingFragment extends BaseFragment {
         for (int i = 0; i < selectedTitleList.size(); i++) {
             fragmentList.add(ShowingListFragment.newInstance(i + ""));
         }
-        FragmentAdapter fAdapter = new FragmentAdapter(this.getChildFragmentManager(),fragmentList);
+        FragmentAdapter fAdapter = new FragmentAdapter(this.getChildFragmentManager(), fragmentList);
         viewpager.setAdapter(fAdapter);
         viewpager.setOffscreenPageLimit(2);
 

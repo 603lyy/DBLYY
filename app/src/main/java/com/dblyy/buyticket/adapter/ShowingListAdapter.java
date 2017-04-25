@@ -1,5 +1,8 @@
 package com.dblyy.buyticket.adapter;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dblyy.R;
@@ -25,9 +28,14 @@ public class ShowingListAdapter extends BaseMultiItemQuickAdapter<BuyShowingList
         switch (viewHolder.getItemViewType()) {
             case BuyShowingListBean.SHOWING:
                 viewHolder.setText(R.id.tv_title, item.getTitleCn())
-                        .setText(R.id.tv_scr, item.getCommonSpecial())
-                        .setText(R.id.tv_show_time, mContext.getString(R.string.buy_ticket_show_time, item.getRDay() + "", item.getRMonth() + ""))
-                        .setText(R.id.tv_cinema, mContext.getString(R.string.buy_ticket_cinema, item.getNearestShowtime().getNearestCinemaCount() + "", item.getNearestShowtime().getNearestShowtimeCount() + ""));
+                        .setText(R.id.tv_scr, item.getCommonSpecial());
+
+                Glide.with(mContext)
+                        .load(item.getImg())
+                        .centerCrop()
+                        .crossFade()
+                        .into((ImageView) viewHolder.getView(R.id.iv_movie));
+
                 break;
         }
     }
