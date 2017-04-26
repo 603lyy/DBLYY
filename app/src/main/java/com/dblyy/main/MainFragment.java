@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.utils.ToastUtils;
 import com.dblyy.R;
-import com.dblyy.discover.DiscoverFragment;
 import com.dblyy.buyticket.ui.HotShowingFragment;
+import com.dblyy.discover.DiscoverFragment;
 import com.dblyy.user.UserFragment;
 import com.dblyy.widget.fragment.BaseFragment;
 
@@ -28,7 +28,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.Common
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.SupportFragment;
-import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  * 作者：linyaye on 2017/4/11 15:17
@@ -39,8 +38,7 @@ public class MainFragment extends BaseFragment {
     private static final String KEY = "key";
 
     @BindView(R.id.layout_container)
-    FrameLayout layoutContainer;
-
+    FrameLayout layout_container;
     @BindView(R.id.magic_indicator)
     MagicIndicator indicator;
 
@@ -133,13 +131,13 @@ public class MainFragment extends BaseFragment {
                     @Override
                     public void onSelected(int i, int i1) {
                         tab_btn.setBackgroundResource(pressedResId[i]);
-                        tab_name.setTextColor(ContextCompat.getColor(context,R.color.color_primary_text));
+                        tab_name.setTextColor(ContextCompat.getColor(context, R.color.color_primary_text));
                     }
 
                     @Override
                     public void onDeselected(int i, int i1) {
                         tab_btn.setBackgroundResource(normalResId[i]);
-                        tab_name.setTextColor(ContextCompat.getColor(context,R.color.color_secondary_text));
+                        tab_name.setTextColor(ContextCompat.getColor(context, R.color.color_secondary_text));
                     }
 
                     @Override
@@ -173,16 +171,6 @@ public class MainFragment extends BaseFragment {
         });
         indicator.setNavigator(navigator);
         fragmentContainerHelper.attachMagicIndicator(indicator);
-    }
-
-    @Override
-    protected FragmentAnimator onCreateFragmentAnimator() {
-        return super.onCreateFragmentAnimator();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 
     @Override

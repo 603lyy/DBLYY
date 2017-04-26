@@ -17,6 +17,7 @@ import java.util.List;
 
 public class ShowingListAdapter extends BaseQuickAdapter<BuyShowingListBean, BaseViewHolder> {
 
+    private long nowTime;
 
     public ShowingListAdapter(List<BuyShowingListBean> data) {
         super(R.layout.item_buy_ticket_showing, data);
@@ -25,16 +26,33 @@ public class ShowingListAdapter extends BaseQuickAdapter<BuyShowingListBean, Bas
 
     @Override
     protected void convert(BaseViewHolder viewHolder, BuyShowingListBean item) {
+        boolean isShow;
         String mShowTime, mCinema;
-        mShowTime = TimeUtil.timeStampTransformToYMDHMS(mContext.getResources(), item.getNearestDay());
+
+        mShowTime = TimeUtil.timeStampTransformToMD(mContext.getResources(), item.getNearestDay());
         mCinema = mContext.getString(R.string.buy_ticket_cinema,
                 item.getNearestCinemaCount() + "",
                 item.getNearestShowtimeCount() + "");
 
+        nowTime = System.currentTimeMillis();
+
         viewHolder.setText(R.id.tv_title, item.getTCn())
                 .setText(R.id.tv_scr, item.getCommonSpecial())
-                .setText(R.id.tv_show_time, mShowTime)
-                .setText(R.id.tv_movie_number, mCinema);
+                .setText(R.id.tv_show_time, mContext.getString(R.string.buy_ticket_show_time, mShowTime));
+
+        if (item.getR() > 0)
+            viewHolder.setText(R.id.tv_point, item.getR() + "");
+        else
+            viewHolder.setText(R.id.tv_point, "");
+
+        if (nowTime > TimeUtil.MDTransformToTimeStamp(mContext.getResources(), item.getRd()))
+            viewHolder.setText(R.id.btn_buy, R.string.buy_ticket_is_ticket)
+                    .setBackgroundRes(R.id.btn_buy, R.drawable.common_orange_border_inside)
+                    .setText(R.id.tv_movie_number, mContext.getString(R.string.buy_ticket_cinema_today, mCinema));
+        else
+            viewHolder.setText(R.id.btn_buy, R.string.buy_ticket_is_unticket)
+                    .setBackgroundRes(R.id.btn_buy, R.drawable.common_green_border_inside)
+                    .setText(R.id.tv_movie_number, mShowTime + mCinema);
 
         Glide.with(mContext)
                 .load(item.getImg())

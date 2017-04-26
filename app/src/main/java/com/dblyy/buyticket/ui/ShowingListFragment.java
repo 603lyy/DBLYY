@@ -19,7 +19,6 @@ import com.dblyy.buyticket.mvp.presenter.impl.BuyShowingListPresenterImpl;
 import com.dblyy.buyticket.mvp.view.IShowingListFragment;
 import com.dblyy.widget.fragment.BaseFragment;
 import com.dblyy.widget.recyclerview.CustomLoadMoreView;
-import com.dblyy.widget.recyclerview.DividerItemDecoration;
 import com.dblyy.widget.recyclerview.animation.CustomAnimation;
 
 import java.util.ArrayList;
@@ -95,7 +94,7 @@ public class ShowingListFragment extends BaseFragment implements IShowingListFra
 
         recyclerview.setLayoutManager(new LinearLayoutManager(context));
         recyclerview.setAdapter(sListAdapter);
-        recyclerview.addItemDecoration(new DividerItemDecoration(context,DividerItemDecoration.VERTICAL_LIST));
+//        recyclerview.addItemDecoration(new DividerItemDecoration(context,DividerItemDecoration.VERTICAL_LIST));
     }
 
 

@@ -15,6 +15,7 @@
 
     <!--时间戳-->
     <string name="time_stamp_transform_md_format">MM月dd日</string>
+    <string name="time_stamp_ymd_format">yyyyMMdd</string>
 
     <!--indicator-->
     <string name="hot_showing">热映</string>
@@ -28,7 +29,10 @@
     <!--购票-->
     <string name="buy_ticket_title_movie">电影</string>
     <string name="buy_ticket_title_cinema">影院</string>
-    <string name="buy_ticket_show_time">%1$s月%2$s日上映</string>
-    <string name="buy_ticket_cinema">今日%1$s家影院上映%2$s场</string>
+    <string name="buy_ticket_show_time">%s上映</string>
+    <string name="buy_ticket_cinema">%1$s家影院上映%2$s场</string>
+    <string name="buy_ticket_cinema_today">今日%s</string>
+    <string name="buy_ticket_is_ticket">购票</string>
+    <string name="buy_ticket_is_unticket">预售</string>
 
 </resources>
