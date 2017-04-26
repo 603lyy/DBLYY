@@ -14,7 +14,7 @@ public interface BuyTicketAPI {
 
     int LIMIT = 20;
 
-    @GET("PageSubArea/HotPlayMovies.api")
+    @GET("Showtime/LocationMovies.api")
     Flowable<JsonObject> getBuyShowingList(
             @Query("locationId") String locationId
     );

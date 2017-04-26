@@ -1,53 +1,61 @@
 package com.dblyy.buyticket.mvp.model.bean;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
+import java.util.List;
 
 /**
- * 作者：linyaye on 2017/4/21 14:39
+ * 作者：linyaye on 2017/4/26 11:42
  */
 
-public class BuyShowingListBean implements MultiItemEntity {
-
-    public static final int SHOWING = 1;
-    public static final int UNSHOW = SHOWING + 1;
-
-    @Override
-    public int getItemType() {
-        return nearestShowtime.isIsTicket() ? SHOWING : UNSHOW;
-    }
+public class BuyShowingListBean {
 
     /**
-     * actorName1 : 吴亦凡
-     * actorName2 : 林更新
-     * btnText :
-     * commonSpecial : 唐僧"重色轻友"与悟空反目
-     * directorName : 徐克
-     * img : http://img5.mtime.cn/mt/2017/01/27/114649.37790398_1280X720X2.jpg
-     * is3D : true
-     * isDMAX : true
+     * NearestCinemaCount : 152
+     * NearestDay : 1486022400
+     * NearestShowtimeCount : 1767
+     * aN1 : 成龙
+     * aN2 : 李治廷
+     * cC : 152
+     * commonSpecial : 大哥携“小鲜肉”全球寻宝石
+     * d : 108
+     * dN : 唐季礼
+     * def : 0
+     * id : 217896
+     * img : http://img5.mtime.cn/mt/2017/01/13/191421.14582165_1280X720X2.jpg
+     * is3D : false
+     * isDMAX : false
      * isFilter : false
      * isHot : true
      * isIMAX : false
-     * isIMAX3D : true
+     * isIMAX3D : false
      * isNew : false
-     * length : 108
-     * movieId : 208325
-     * nearestShowtime : {"isTicket":true,"nearestCinemaCount":152,"nearestShowDay":1486022400,"nearestShowtimeCount":1797}
-     * rDay : 28
-     * rMonth : 1
-     * rYear : 2017
-     * ratingFinal : 6.7
-     * titleCn : 西游伏妖篇
-     * titleEn : Journey to the West: Demon Chapter
-     * type : 奇幻 / 动作 / 喜剧
-     * wantedCount : 2631
+     * isTicket : true
+     * m :
+     * movieType : 动作 / 冒险 / 喜剧
+     * p : ["动作冒险喜剧"]
+     * r : 6.2
+     * rc : 0
+     * rd : 20170128
+     * rsC : 0
+     * sC : 3003
+     * t : 功夫瑜伽
+     * tCn : 功夫瑜伽
+     * tEn : Kung-Fu Yoga
+     * ua : -1
+     * versions : []
+     * wantedCount : 1132
      */
 
-    private String actorName1;
-    private String actorName2;
-    private String btnText;
+    private int NearestCinemaCount;
+    private long NearestDay;
+    private int NearestShowtimeCount;
+    private String aN1;
+    private String aN2;
+    private int cC;
     private String commonSpecial;
-    private String directorName;
+    private String d;
+    private String dN;
+    private int def;
+    private int id;
     private String img;
     private boolean is3D;
     private boolean isDMAX;
@@ -56,47 +64,68 @@ public class BuyShowingListBean implements MultiItemEntity {
     private boolean isIMAX;
     private boolean isIMAX3D;
     private boolean isNew;
-    private int length;
-    private int movieId;
-    /**
-     * isTicket : true
-     * nearestCinemaCount : 152
-     * nearestShowDay : 1486022400
-     * nearestShowtimeCount : 1797
-     */
-
-    private NearestShowtimeBean nearestShowtime;
-    private int rDay;
-    private int rMonth;
-    private int rYear;
-    private double ratingFinal;
-    private String titleCn;
-    private String titleEn;
-    private String type;
+    private boolean isTicket;
+    private String m;
+    private String movieType;
+    private double r;
+    private int rc;
+    private String rd;
+    private int rsC;
+    private int sC;
+    private String t;
+    private String tCn;
+    private String tEn;
+    private int ua;
     private int wantedCount;
+    private List<String> p;
+    private List<?> versions;
 
-    public String getActorName1() {
-        return actorName1;
+    public int getNearestCinemaCount() {
+        return NearestCinemaCount;
     }
 
-    public void setActorName1(String actorName1) {
-        this.actorName1 = actorName1;
+    public void setNearestCinemaCount(int NearestCinemaCount) {
+        this.NearestCinemaCount = NearestCinemaCount;
     }
 
-    public String getActorName2() {
-        return actorName2;
+    public long getNearestDay() {
+        return NearestDay;
     }
 
-    public void setActorName2(String actorName2) {
-        this.actorName2 = actorName2;
+    public void setNearestDay(int NearestDay) {
+        this.NearestDay = NearestDay;
     }
 
-    public String getBtnText() {
-        return btnText;
+    public int getNearestShowtimeCount() {
+        return NearestShowtimeCount;
     }
 
-    public void setBtnText(String btnText) {
-        this.btnText = btnText;
+    public void setNearestShowtimeCount(int NearestShowtimeCount) {
+        this.NearestShowtimeCount = NearestShowtimeCount;
+    }
+
+    public String getAN1() {
+        return aN1;
+    }
+
+    public void setAN1(String aN1) {
+        this.aN1 = aN1;
+    }
+
+    public String getAN2() {
+        return aN2;
+    }
+
+    public void setAN2(String aN2) {
+        this.aN2 = aN2;
+    }
+
+    public int getCC() {
+        return cC;
+    }
+
+    public void setCC(int cC) {
+        this.cC = cC;
     }
 
     public String getCommonSpecial() {
@@ -107,12 +136,36 @@ public class BuyShowingListBean implements MultiItemEntity {
         this.commonSpecial = commonSpecial;
     }
 
-    public String getDirectorName() {
-        return directorName;
+    public String getD() {
+        return d;
     }
 
-    public void setDirectorName(String directorName) {
-        this.directorName = directorName;
+    public void setD(String d) {
+        this.d = d;
+    }
+
+    public String getDN() {
+        return dN;
+    }
+
+    public void setDN(String dN) {
+        this.dN = dN;
+    }
+
+    public int getDef() {
+        return def;
+    }
+
+    public void setDef(int def) {
+        this.def = def;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImg() {
@@ -179,84 +232,100 @@ public class BuyShowingListBean implements MultiItemEntity {
         this.isNew = isNew;
     }
 
-    public int getLength() {
-        return length;
+    public boolean isIsTicket() {
+        return isTicket;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setIsTicket(boolean isTicket) {
+        this.isTicket = isTicket;
     }
 
-    public int getMovieId() {
-        return movieId;
+    public String getM() {
+        return m;
     }
 
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
+    public void setM(String m) {
+        this.m = m;
     }
 
-    public NearestShowtimeBean getNearestShowtime() {
-        return nearestShowtime;
+    public String getMovieType() {
+        return movieType;
     }
 
-    public void setNearestShowtime(NearestShowtimeBean nearestShowtime) {
-        this.nearestShowtime = nearestShowtime;
+    public void setMovieType(String movieType) {
+        this.movieType = movieType;
     }
 
-    public int getRDay() {
-        return rDay;
+    public double getR() {
+        return r;
     }
 
-    public void setRDay(int rDay) {
-        this.rDay = rDay;
+    public void setR(double r) {
+        this.r = r;
     }
 
-    public int getRMonth() {
-        return rMonth;
+    public int getRc() {
+        return rc;
     }
 
-    public void setRMonth(int rMonth) {
-        this.rMonth = rMonth;
+    public void setRc(int rc) {
+        this.rc = rc;
     }
 
-    public int getRYear() {
-        return rYear;
+    public String getRd() {
+        return rd;
     }
 
-    public void setRYear(int rYear) {
-        this.rYear = rYear;
+    public void setRd(String rd) {
+        this.rd = rd;
     }
 
-    public double getRatingFinal() {
-        return ratingFinal;
+    public int getRsC() {
+        return rsC;
     }
 
-    public void setRatingFinal(double ratingFinal) {
-        this.ratingFinal = ratingFinal;
+    public void setRsC(int rsC) {
+        this.rsC = rsC;
     }
 
-    public String getTitleCn() {
-        return titleCn;
+    public int getSC() {
+        return sC;
     }
 
-    public void setTitleCn(String titleCn) {
-        this.titleCn = titleCn;
+    public void setSC(int sC) {
+        this.sC = sC;
     }
 
-    public String getTitleEn() {
-        return titleEn;
+    public String getT() {
+        return t;
     }
 
-    public void setTitleEn(String titleEn) {
-        this.titleEn = titleEn;
+    public void setT(String t) {
+        this.t = t;
     }
 
-    public String getType() {
-        return type;
+    public String getTCn() {
+        return tCn;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTCn(String tCn) {
+        this.tCn = tCn;
+    }
+
+    public String getTEn() {
+        return tEn;
+    }
+
+    public void setTEn(String tEn) {
+        this.tEn = tEn;
+    }
+
+    public int getUa() {
+        return ua;
+    }
+
+    public void setUa(int ua) {
+        this.ua = ua;
     }
 
     public int getWantedCount() {
@@ -267,43 +336,19 @@ public class BuyShowingListBean implements MultiItemEntity {
         this.wantedCount = wantedCount;
     }
 
+    public List<String> getP() {
+        return p;
+    }
 
-    public static class NearestShowtimeBean {
-        private boolean isTicket;
-        private int nearestCinemaCount;
-        private int nearestShowDay;
-        private int nearestShowtimeCount;
+    public void setP(List<String> p) {
+        this.p = p;
+    }
 
-        public boolean isIsTicket() {
-            return isTicket;
-        }
+    public List<?> getVersions() {
+        return versions;
+    }
 
-        public void setIsTicket(boolean isTicket) {
-            this.isTicket = isTicket;
-        }
-
-        public int getNearestCinemaCount() {
-            return nearestCinemaCount;
-        }
-
-        public void setNearestCinemaCount(int nearestCinemaCount) {
-            this.nearestCinemaCount = nearestCinemaCount;
-        }
-
-        public int getNearestShowDay() {
-            return nearestShowDay;
-        }
-
-        public void setNearestShowDay(int nearestShowDay) {
-            this.nearestShowDay = nearestShowDay;
-        }
-
-        public int getNearestShowtimeCount() {
-            return nearestShowtimeCount;
-        }
-
-        public void setNearestShowtimeCount(int nearestShowtimeCount) {
-            this.nearestShowtimeCount = nearestShowtimeCount;
-        }
+    public void setVersions(List<?> versions) {
+        this.versions = versions;
     }
 }
