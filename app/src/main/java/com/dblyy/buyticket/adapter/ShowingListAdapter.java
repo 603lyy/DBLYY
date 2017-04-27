@@ -1,5 +1,6 @@
 package com.dblyy.buyticket.adapter;
 
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -39,6 +40,13 @@ public class ShowingListAdapter extends BaseQuickAdapter<BuyShowingListBean, Bas
         viewHolder.setText(R.id.tv_title, item.getTCn())
                 .setText(R.id.tv_scr, item.getCommonSpecial())
                 .setText(R.id.tv_show_time, mContext.getString(R.string.buy_ticket_show_time, mShowTime));
+
+        if (TextUtils.isEmpty(item.getCommonSpecial()))
+            viewHolder.setText(R.id.tv_scr, item.getWantedCount() + "")
+                    .setText(R.id.tv_want_count, mContext.getString(R.string.buy_ticket_want_count, item.getMovieType()));
+        else
+            viewHolder.setText(R.id.tv_scr, item.getCommonSpecial())
+                    .setText(R.id.tv_want_count, "");
 
         if (item.getR() > 0)
             viewHolder.setText(R.id.tv_point, item.getR() + "");
