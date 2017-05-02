@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.utils.ToastUtils;
 import com.dblyy.R;
-import com.dblyy.buyticket.ui.HotShowingFragment;
+import com.dblyy.buyticket.ui.BuyTicketFragment;
 import com.dblyy.discover.DiscoverFragment;
 import com.dblyy.user.UserFragment;
 import com.dblyy.widget.fragment.BaseFragment;
@@ -99,7 +99,7 @@ public class MainFragment extends BaseFragment {
         CommonNavigator navigator;
 
         //Fragment相关
-        fragments[0] = HotShowingFragment.newInstance();
+        fragments[0] = BuyTicketFragment.newInstance();
         fragments[1] = DiscoverFragment.newInstance();
         fragments[2] = UserFragment.newInstance();
 

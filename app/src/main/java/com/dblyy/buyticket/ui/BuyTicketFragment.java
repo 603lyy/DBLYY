@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
  * 作者：linyaye on 2017/4/11 16:30
  */
 
-public class HotShowingFragment extends BaseFragment {
+public class BuyTicketFragment extends BaseFragment {
 
     @BindView(R.id.tv_movie)
     TextView tv_movie;
@@ -51,15 +51,15 @@ public class HotShowingFragment extends BaseFragment {
 
     private Context context;
 
-    public static HotShowingFragment newInstance() {
-        return new HotShowingFragment();
+    public static BuyTicketFragment newInstance() {
+        return new BuyTicketFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_hot_showing, container, false);
+        View view = inflater.inflate(R.layout.fragment_buy_ticket, container, false);
 
         ButterKnife.bind(this, view);
 
