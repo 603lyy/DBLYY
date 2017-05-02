@@ -70,4 +70,6 @@ public class BuyShowingListPresenterImpl implements IBuyShowingListPresenter {
                     }
                 });
     }
+
+
 }

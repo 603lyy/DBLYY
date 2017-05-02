@@ -18,4 +18,9 @@ public interface BuyTicketAPI {
     Flowable<JsonObject> getBuyShowingList(
             @Query("locationId") String locationId
     );
+
+    @GET("Movie/MovieComingNew.api")
+    Flowable<JsonObject> getComingNewList(
+            @Query("locationId") String locationId
+    );
 }

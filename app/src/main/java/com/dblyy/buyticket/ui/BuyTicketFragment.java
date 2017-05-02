@@ -82,9 +82,11 @@ public class BuyTicketFragment extends BaseFragment {
         for (String aTnameArray : nameArray)
             selectedTitleList.add(aTnameArray);
 
-        for (int i = 0; i < selectedTitleList.size(); i++) {
-            fragmentList.add(ShowingListFragment.newInstance(i + ""));
-        }
+//        for (int i = 0; i < selectedTitleList.size(); i++) {
+//            fragmentList.add(ShowingListFragment.newInstance(1 + ""));
+//        }
+        fragmentList.add(ShowingListFragment.newInstance("0"));
+        fragmentList.add(ComingNewListFragment.newInstance("1"));
         FragmentAdapter fAdapter = new FragmentAdapter(this.getChildFragmentManager(), fragmentList);
         viewpager.setAdapter(fAdapter);
         viewpager.setOffscreenPageLimit(2);
