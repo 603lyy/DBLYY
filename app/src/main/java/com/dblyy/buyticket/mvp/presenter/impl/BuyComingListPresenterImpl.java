@@ -1,7 +1,5 @@
 package com.dblyy.buyticket.mvp.presenter.impl;
 
-import android.util.Log;
-
 import com.dblyy.buyticket.api.BuyTicketAPI;
 import com.dblyy.buyticket.mvp.model.bean.BuyComingListBean;
 import com.dblyy.buyticket.mvp.presenter.IBuyComingListPresenter;
@@ -18,8 +16,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * 作者：linyaye on 2017/5/2 15:49
@@ -44,8 +40,8 @@ public class BuyComingListPresenterImpl implements IBuyComingListPresenter {
                     public Publisher<BuyComingListBean> apply(@NonNull JsonObject jsonObject) throws Exception {
 //                        for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
 //                            JsonElement jsonElement = entry.getValue();
-                            BuyComingListBean item = (BuyComingListBean) GsonHelper.parseJson(jsonObject, BuyComingListBean.class);
-                            return Flowable.just(item);
+                        BuyComingListBean item = (BuyComingListBean) GsonHelper.parseJson(jsonObject, BuyComingListBean.class);
+                        return Flowable.just(item);
 //                        }
 //                        return null;
                     }
@@ -54,7 +50,7 @@ public class BuyComingListPresenterImpl implements IBuyComingListPresenter {
                 .subscribe(new HttpSubscriber<BuyComingListBean>() {
                     @Override
                     public void _onNext(BuyComingListBean item) {
-                        Log.i(TAG, "_onNext: "+item);
+                        view.updateRecyclerView(item);
                     }
 
                     @Override

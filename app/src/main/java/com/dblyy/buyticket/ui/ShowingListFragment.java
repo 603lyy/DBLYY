@@ -34,7 +34,7 @@ import butterknife.ButterKnife;
 public class ShowingListFragment extends BaseFragment implements IShowingListFragment,
         BaseQuickAdapter.RequestLoadMoreListener {
 
-    @BindView(R.id.recyclerview)
+    @BindView(R.id.recycler_view)
     RecyclerView recyclerview;
 
     private static final String BUYTICKET_TYPE_ID = "buyticket_type_id";

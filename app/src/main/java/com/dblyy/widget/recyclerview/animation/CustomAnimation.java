@@ -7,7 +7,6 @@ import android.view.View;
 import com.chad.library.adapter.base.animation.BaseAnimation;
 
 /**
- * author: liminjie
  * date: 2017/2/27
  * desc: CustionAnimation列表的加载动画
  */
