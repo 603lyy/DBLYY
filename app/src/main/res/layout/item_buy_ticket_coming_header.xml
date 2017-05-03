@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:contentDescription="最受关注电影图片"
+        android:id="@+id/iv_movie_header"
+        android:layout_width="110dp"
+        android:layout_height="150dp"
+        android:layout_margin="@dimen/margin_little_small" />
+
+    <TextView
+        android:id="@+id/tv_title_header"
+        style="@style/CommonTextView"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tv_cri_header"
+        style="@style/CommonTextView"/>
+
+</LinearLayout>

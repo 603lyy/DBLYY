@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.dblyy.R;
 import com.dblyy.buyticket.adapter.ComingListAdapter;
+import com.dblyy.buyticket.adapter.ComingListHeaderAdapter;
 import com.dblyy.buyticket.mvp.model.bean.BuyComingListBean;
 import com.dblyy.buyticket.mvp.presenter.impl.BuyComingListPresenterImpl;
 import com.dblyy.buyticket.mvp.view.IComingListFragment;
@@ -37,6 +38,8 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     private BuyComingListPresenterImpl presenter;
 
     private ComingListAdapter listAdapter;
+
+    private ComingListHeaderAdapter headerAdapter;
 
     private final List<BuyComingListBean.MoviecomingsBean> comingList = new ArrayList<>();
 
@@ -80,9 +83,17 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
         presenter = new BuyComingListPresenterImpl(this);
 
         //设置RefreshLayout
-
         //设置RecyclerView
+        headerAdapter = new ComingListHeaderAdapter(new ArrayList<>());
+        View header = LayoutInflater.from(getActivity()).inflate(R.layout.header_buy_ticket_coming, null);
+        RecyclerView recyclerViewHeader = (RecyclerView) header.findViewById(R.id.recycler_view_header);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerViewHeader.setLayoutManager(linearLayoutManager);
+        recyclerViewHeader.setAdapter(headerAdapter);
+
         listAdapter = new ComingListAdapter(comingList);
+        listAdapter.addHeaderView(header);
         listAdapter.openLoadAnimation(new CustomAnimation());
 
         recycler_view.setLayoutManager(new LinearLayoutManager(context));
@@ -92,6 +103,7 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     @Override
     public void updateRecyclerView(BuyComingListBean data) {
         listAdapter.setNewData(data.getMoviecomings());
+        headerAdapter.setNewData(data.getAttention());
     }
 
     @Override

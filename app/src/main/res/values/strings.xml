@@ -35,5 +35,6 @@
     <string name="buy_ticket_is_ticket">购票</string>
     <string name="buy_ticket_is_unticket">预售</string>
     <string name="buy_ticket_want_count">人想看-%s</string>
+    <string name="buy_ticket_most_popular">最受关注</string>
 
 </resources>
