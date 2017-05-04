@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     @BindView(R.id.recycler_view)
     RecyclerView recycler_view;
 
+    private RecyclerView recycler_view_header;
+
     private BuyComingListPresenterImpl presenter;
 
     private ComingListAdapter listAdapter;
@@ -42,6 +45,8 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     private ComingListHeaderAdapter headerAdapter;
 
     private final List<BuyComingListBean.MoviecomingsBean> comingList = new ArrayList<>();
+
+    private final List<BuyComingListBean.AttentionBean> attentionList = new ArrayList<>();
 
     private Context context;
 
@@ -84,26 +89,33 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
 
         //设置RefreshLayout
         //设置RecyclerView
-        headerAdapter = new ComingListHeaderAdapter(new ArrayList<>());
-        View header = LayoutInflater.from(getActivity()).inflate(R.layout.header_buy_ticket_coming, null);
-        RecyclerView recyclerViewHeader = (RecyclerView) header.findViewById(R.id.recycler_view_header);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerViewHeader.setLayoutManager(linearLayoutManager);
-        recyclerViewHeader.setAdapter(headerAdapter);
-
         listAdapter = new ComingListAdapter(comingList);
+        headerAdapter = new ComingListHeaderAdapter(attentionList);
+
+//        View header = LayoutInflater.from(getActivity()).inflate(R.layout.header_buy_ticket_coming, null);
+        View header = getActivity().getLayoutInflater().inflate(R.layout.header_buy_ticket_coming,
+                (ViewGroup) recycler_view.getParent(), false);
+        recycler_view_header = (RecyclerView) header.findViewById(R.id.recycler_view_header);
+        recycler_view_header.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        recycler_view_header.setAdapter(headerAdapter);
+
         listAdapter.addHeaderView(header);
         listAdapter.openLoadAnimation(new CustomAnimation());
-
         recycler_view.setLayoutManager(new LinearLayoutManager(context));
         recycler_view.setAdapter(listAdapter);
     }
 
     @Override
     public void updateRecyclerView(BuyComingListBean data) {
-        listAdapter.setNewData(data.getMoviecomings());
-        headerAdapter.setNewData(data.getAttention());
+        Log.i(TAG, "updateRecyclerView: ");
+        Log.i(TAG, "updateRecyclerView: ");
+        for (int i = 0; i <5 ; i++) {
+            i++;
+        }
+//        listAdapter.addData(data.getMoviecomings());
+//        headerAdapter.addData(data.getAttention());
+//        headerAdapter.loadMoreEnd();
+//        listAdapter.loadMoreEnd();
     }
 
     @Override

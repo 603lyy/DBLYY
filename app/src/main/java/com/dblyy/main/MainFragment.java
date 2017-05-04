@@ -96,7 +96,7 @@ public class MainFragment extends BaseFragment {
 
     private void initView() {
 
-        CommonNavigator navigator;
+        CommonNavigator navigator = new CommonNavigator(context);
 
         //Fragment相关
         fragments[0] = BuyTicketFragment.newInstance();
@@ -110,7 +110,6 @@ public class MainFragment extends BaseFragment {
 
         current = 0;
 
-        navigator = new CommonNavigator(context);
         navigator.setAdjustMode(true);
         navigator.setFollowTouch(true);
         navigator.setAdapter(new CommonNavigatorAdapter() {
@@ -169,6 +168,7 @@ public class MainFragment extends BaseFragment {
                 return null;
             }
         });
+
         indicator.setNavigator(navigator);
         fragmentContainerHelper.attachMagicIndicator(indicator);
     }
