@@ -1,5 +1,6 @@
 package com.dblyy.buyticket.mvp.model.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class BuyComingListBean {
      * wantedCount : 2447
      */
 
-    private List<AttentionBean> attention;
+    private ArrayList<AttentionBean> attention;
     /**
      * actor1 : 朱亚文
      * actor2 : 欧豪
@@ -47,25 +48,25 @@ public class BuyComingListBean {
      * title : 建军大业
      * type : 剧情
      * videoCount : 3
-     * videos : [{"hightUrl":"","image":"http://img5.mtime.cn/mg/2017/01/27/104825.83699710.jpg","length":18,"title":"建军大业 群星贺新春","url":"http://vfx.mtime.cn/Video/2017/01/27/mp4/170127104800421175.mp4","videoId":64403},{"hightUrl":"","image":"http://img31.mtime.cn/mg/2016/08/02/010955.43162565.jpg","length":105,"title":"建军大业 开机发布会","url":"http://vfx.mtime.cn/Video/2016/08/02/mp4/160802011042515239.mp4","videoId":61847},{"hightUrl":"","image":"http://img5.mtime.cn/mg/2017/04/16/213629.48713561.jpg","length":113,"title":"建军大业 北京发布会","url":"http://vfx.mtime.cn/Video/2017/04/16/mp4/170416213619149031.mp4","videoId":65327}]
+     * videos : [{"hightUrl":"","image":"http://img5.mtime.cn/mg/2017/01/27/104825.83699710.jpg","length":18,"title":"建军大业 群星贺新春","url":"http://vfx.mtime.cn/Video/2017/01/27/mp4/170127104800421175.mp4","videoId":64403},{"hightUrl":"","image":"http://img31.mtime.cn/mg/2016/08/02/010955.43162565.jpg","length":105,"title":"建军大业 开机发布会","url":"http://vfx.mtime.cn/Video/2016/08/02/mp4/160802011042515239.mp4","videoId":61847},{"hightUrl":"","image":"http://img5.mtime.cn/mg/2017/04/16/213629.48713561.jpg","length":113,"title":"建军大业 北京发布会","url":"http://vfx.mtime.cn/Video/2017/04/16/mp4/170416213619149031.mp4","videoI":65327}]
      * wantedCount : 69
      */
 
-    private List<MoviecomingsBean> moviecomings;
+    private ArrayList<MoviecomingsBean> moviecomings;
 
-    public List<AttentionBean> getAttention() {
+    public ArrayList<AttentionBean> getAttention() {
         return attention;
     }
 
-    public void setAttention(List<AttentionBean> attention) {
+    public void setAttention(ArrayList<AttentionBean> attention) {
         this.attention = attention;
     }
 
-    public List<MoviecomingsBean> getMoviecomings() {
+    public ArrayList<MoviecomingsBean> getMoviecomings() {
         return moviecomings;
     }
 
-    public void setMoviecomings(List<MoviecomingsBean> moviecomings) {
+    public void setMoviecomings(ArrayList<MoviecomingsBean> moviecomings) {
         this.moviecomings = moviecomings;
     }
 
