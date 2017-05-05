@@ -24,7 +24,6 @@ import com.dblyy.widget.recyclerview.animation.CustomAnimation;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -34,7 +33,7 @@ import butterknife.ButterKnife;
 public class ShowingListFragment extends BaseFragment implements IShowingListFragment,
         BaseQuickAdapter.RequestLoadMoreListener {
 
-    @BindView(R.id.recycler_view)
+//    @BindView(R.id.recycler_view)
     RecyclerView recyclerview;
 
     private static final String BUYTICKET_TYPE_ID = "buyticket_type_id";
@@ -63,6 +62,7 @@ public class ShowingListFragment extends BaseFragment implements IShowingListFra
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_showing_list, container, false);
+        recyclerview = (RecyclerView) view.findViewById(R.id.recycler_view);
 
         ButterKnife.bind(this, view);
 

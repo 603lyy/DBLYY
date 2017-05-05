@@ -9,43 +9,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dblyy.R;
 import com.dblyy.buyticket.adapter.ComingListAdapter;
-import com.dblyy.buyticket.adapter.ComingListHeaderAdapter;
+import com.dblyy.buyticket.api.BuyTicketAPI;
 import com.dblyy.buyticket.mvp.model.bean.BuyComingListBean;
 import com.dblyy.buyticket.mvp.presenter.impl.BuyComingListPresenterImpl;
 import com.dblyy.buyticket.mvp.view.IComingListFragment;
 import com.dblyy.widget.fragment.BaseFragment;
+import com.dblyy.widget.recyclerview.CustomLoadMoreView;
 import com.dblyy.widget.recyclerview.animation.CustomAnimation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * 作者：linyaye on 2017/5/2 15:38
  */
 
-public class ComingNewListFragment extends BaseFragment implements IComingListFragment {
+public class ComingNewListFragment extends BaseFragment implements IComingListFragment,
+        BaseQuickAdapter.RequestLoadMoreListener {
 
     private static final String BUYTICKET_TYPE_ID = "buyticket_type_id";
 
-    @BindView(R.id.recycler_view_coming_list)
+    //    @BindView(R.id.recycler_view_coming_list)
     RecyclerView recycler_view;
 
-    private RecyclerView recycler_view_header;
+//    private RecyclerView recycler_view_header;
 
     private BuyComingListPresenterImpl presenter;
 
     private ComingListAdapter listAdapter;
 
-    private ComingListHeaderAdapter headerAdapter;
+//    private ComingListHeaderAdapter headerAdapter;
 
-    private final List<BuyComingListBean.MoviecomingsBean> comingList = new ArrayList<>();
+    private final List<BuyComingListBean> comingList = new ArrayList<>();
 
-    private final List<BuyComingListBean.AttentionBean> attentionList = new ArrayList<>();
+//    private final List<BuyComingListBean> attentionList = new ArrayList<>();
 
     private Context context;
 
@@ -65,6 +67,7 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_coming_list, container, false);
+        recycler_view = (RecyclerView) view.findViewById(R.id.recycler_view_coming_list);
 
         ButterKnife.bind(this, view);
 
@@ -88,27 +91,24 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
 
         //设置RefreshLayout
         //设置RecyclerView
-        listAdapter = new ComingListAdapter(comingList);
+        listAdapter = new ComingListAdapter(new ArrayList<>());
         listAdapter.openLoadAnimation(new CustomAnimation());
-//        headerAdapter = new ComingListHeaderAdapter(attentionList);
-        recycler_view.setLayoutManager(new LinearLayoutManager(context));
+        listAdapter.setAutoLoadMoreSize(BuyTicketAPI.LIMIT);//加载更多的触发条件
+        listAdapter.setOnLoadMoreListener(this, recycler_view);//加载更多回调监听
+        listAdapter.setLoadMoreView(new CustomLoadMoreView());
 
-//        View header = LayoutInflater.from(getActivity()).inflate(R.layout.header_buy_ticket_coming, null);
-//        View header = getActivity().getLayoutInflater().inflate(R.layout.header_buy_ticket_coming,
-//                (ViewGroup) recycler_view.getParent(), false);
-//        recycler_view_header = (RecyclerView) header.findViewById(R.id.recycler_view_header);
-//        recycler_view_header.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-//        recycler_view_header.setAdapter(headerAdapter);
+        recycler_view.setLayoutManager(new LinearLayoutManager(context));
         recycler_view.setAdapter(listAdapter);
-//        listAdapter.addHeaderView(header);
     }
 
     @Override
-    public void updateRecyclerView(BuyComingListBean data) {
-        listAdapter.setNewData(data.getMoviecomings());
-//        headerAdapter.setNewData(data.getAttention());
-//        headerAdapter.loadMoreEnd();
-        listAdapter.loadMoreEnd();
+    public void updateRecyclerView(List<BuyComingListBean> list) {
+        listAdapter.addData(list);
+        if (list.size() < BuyTicketAPI.LIMIT) {//分页数据size比每页数据的limit小，说明已全部加载数据
+            listAdapter.loadMoreEnd();
+        } else {
+            listAdapter.loadMoreComplete();
+        }
     }
 
     @Override
@@ -119,5 +119,10 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    public void onLoadMoreRequested() {
+
     }
 }

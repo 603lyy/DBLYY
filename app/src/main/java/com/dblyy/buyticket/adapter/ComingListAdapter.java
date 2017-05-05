@@ -14,22 +14,22 @@ import java.util.List;
  * 作者：linyaye on 2017/5/3 10:19
  */
 
-public class ComingListAdapter extends BaseQuickAdapter<BuyComingListBean.MoviecomingsBean, BaseViewHolder> {
+public class ComingListAdapter extends BaseQuickAdapter<BuyComingListBean, BaseViewHolder> {
 
 
-    public ComingListAdapter(List<BuyComingListBean.MoviecomingsBean> data) {
+    public ComingListAdapter(List<BuyComingListBean> data) {
         super(R.layout.item_buy_ticket_coming, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder holder, BuyComingListBean.MoviecomingsBean item) {
+    protected void convert(BaseViewHolder holder, BuyComingListBean item) {
 
         Glide.with(mContext)
                 .load(item.getImage())
                 .centerCrop()
                 .crossFade()
-                .into((ImageView) holder.getView(R.id.iv_movie));
+                .into((ImageView) holder.getView(R.id.iv_movie_coming));
 
-        holder.setText(R.id.tv_title, item.getTitle());
+        holder.setText(R.id.tv_title_coming, item.getTitle());
     }
 }

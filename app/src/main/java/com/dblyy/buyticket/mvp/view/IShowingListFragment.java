@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface IShowingListFragment extends IErrorView {
 
-    void updateRecyclerView(List<BuyShowingListBean> roomBeanList);//更新列表
+    void updateRecyclerView(List<BuyShowingListBean> list);//更新列表
 }

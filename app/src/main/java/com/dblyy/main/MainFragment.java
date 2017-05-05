@@ -25,7 +25,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerInd
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.CommonPagerTitleView;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.SupportFragment;
 
@@ -37,9 +36,9 @@ public class MainFragment extends BaseFragment {
 
     private static final String KEY = "key";
 
-    @BindView(R.id.layout_container)
+//    @BindView(R.id.layout_container)
     FrameLayout layout_container;
-    @BindView(R.id.magic_indicator)
+//    @BindView(R.id.magic_indicator)
     MagicIndicator indicator;
 
     private final int[] normalResId = new int[]{
@@ -84,6 +83,8 @@ public class MainFragment extends BaseFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        indicator = (MagicIndicator) view.findViewById(R.id.magic_indicator);
+        layout_container = (FrameLayout) view.findViewById(R.id.layout_container);
 
         ButterKnife.bind(this, view);
 

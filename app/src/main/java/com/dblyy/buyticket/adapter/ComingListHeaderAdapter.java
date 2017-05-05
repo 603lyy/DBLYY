@@ -14,14 +14,14 @@ import java.util.List;
  * 作者：linyaye on 2017/5/3 11:38
  */
 
-public class ComingListHeaderAdapter extends BaseQuickAdapter<BuyComingListBean.AttentionBean, BaseViewHolder> {
+public class ComingListHeaderAdapter extends BaseQuickAdapter<BuyComingListBean, BaseViewHolder> {
 
-    public ComingListHeaderAdapter(List<BuyComingListBean.AttentionBean> data) {
+    public ComingListHeaderAdapter(List<BuyComingListBean> data) {
         super(R.layout.item_buy_ticket_coming_header, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder holder, BuyComingListBean.AttentionBean item) {
+    protected void convert(BaseViewHolder holder, BuyComingListBean item) {
 
         Glide.with(mContext)
                 .load(item.getImage())

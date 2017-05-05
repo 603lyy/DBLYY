@@ -46,7 +46,6 @@ public class BuyShowingListPresenterImpl implements IBuyShowingListPresenter {
                         for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
                             if (entry.getValue().isJsonArray()) {
                                 JsonArray array = entry.getValue().getAsJsonArray();
-
                                 ArrayList<BuyShowingListBean> list = new ArrayList<>();
                                 for (JsonElement element : array) {
                                     list.add((BuyShowingListBean) GsonHelper.parseJson(element, BuyShowingListBean.class));
