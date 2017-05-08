@@ -14,15 +14,15 @@ import java.util.List;
  * 作者：linyaye on 2017/5/3 10:19
  */
 
-public class ComingListAdapter extends BaseQuickAdapter<BuyComingListBean, BaseViewHolder> {
+public class ComingListAdapter extends BaseQuickAdapter<BuyComingListBean.MoviecomingsBean, BaseViewHolder> {
 
 
-    public ComingListAdapter(List<BuyComingListBean> data) {
+    public ComingListAdapter(List<BuyComingListBean.MoviecomingsBean> data) {
         super(R.layout.item_buy_ticket_coming, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder holder, BuyComingListBean item) {
+    protected void convert(BaseViewHolder holder, BuyComingListBean.MoviecomingsBean item) {
 
         Glide.with(mContext)
                 .load(item.getImage())

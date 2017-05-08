@@ -7,14 +7,9 @@ import com.dblyy.buyticket.mvp.view.IComingListFragment;
 import com.dblyy.util.GsonHelper;
 import com.dblyy.util.retrofit.HttpSubscriber;
 import com.dblyy.util.retrofit.RetrofitHelper;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import org.reactivestreams.Publisher;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 import io.reactivex.Flowable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -40,29 +35,17 @@ public class BuyComingListPresenterImpl implements IBuyComingListPresenter {
         RetrofitHelper.getRetrofitHelper().create(BuyTicketAPI.class)
                 .getComingNewList(locationId)
                 .subscribeOn(Schedulers.io())
-                .flatMap(new Function<JsonObject, Publisher<ArrayList<BuyComingListBean>>>() {
+                .flatMap(new Function<JsonObject, Publisher<BuyComingListBean>>() {
                     @Override
-                    public Publisher<ArrayList<BuyComingListBean>> apply(@NonNull JsonObject jsonObject) throws Exception {
-                        for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-                            if (entry.getValue().isJsonArray()) {
-                                JsonArray jsonArray = entry.getValue().getAsJsonArray();
-                                ArrayList<BuyComingListBean> list = new ArrayList<>();
-                                for (JsonElement element : jsonArray) {
-                                    list.add((BuyComingListBean) GsonHelper.parseJson(element, BuyComingListBean.class));
-                                }
-                                return Flowable.just(list);
-                            }
-//                            JsonElement jsonElement = entry.getValue();
-//                            BuyComingListBean item = (BuyComingListBean) GsonHelper.parseJson(jsonObject, BuyComingListBean.class);
-//                            return Flowable.just(item);
-                        }
-                        return null;
+                    public Publisher<BuyComingListBean> apply(@NonNull JsonObject jsonObject) throws Exception {
+                        BuyComingListBean bean = (BuyComingListBean) GsonHelper.parseJson(jsonObject, BuyComingListBean.class);
+                        return Flowable.just(bean);
                     }
                 })
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new HttpSubscriber<ArrayList<BuyComingListBean>>() {
+                .subscribe(new HttpSubscriber<BuyComingListBean>() {
                     @Override
-                    public void _onNext(ArrayList<BuyComingListBean> item) {
+                    public void _onNext(BuyComingListBean item) {
                         view.updateRecyclerView(item);
                     }
 

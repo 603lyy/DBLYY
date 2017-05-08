@@ -37,7 +37,7 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     //    @BindView(R.id.recycler_view_coming_list)
     RecyclerView recycler_view;
 
-//    private RecyclerView recycler_view_header;
+    private RecyclerView recycler_view_header;
 
     private BuyComingListPresenterImpl presenter;
 
@@ -92,17 +92,25 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
         //设置RefreshLayout
         //设置RecyclerView
         listAdapter = new ComingListAdapter(new ArrayList<>());
-        headerAdapter = new ComingListHeaderAdapter(new ArrayList<>());
         listAdapter.openLoadAnimation(new CustomAnimation());
+
+        headerAdapter = new ComingListHeaderAdapter(new ArrayList<>());
         headerAdapter.openLoadAnimation(new CustomAnimation());
+
+        View header = getActivity().getLayoutInflater().inflate(R.layout.header_buy_ticket_coming, (ViewGroup) recycler_view.getParent(), false);
+        recycler_view_header = (RecyclerView) header.findViewById(R.id.recycler_view_header);
+        recycler_view_header.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
+        recycler_view_header.setAdapter(headerAdapter);
+        listAdapter.addHeaderView(header);
 
         recycler_view.setLayoutManager(new LinearLayoutManager(context));
         recycler_view.setAdapter(listAdapter);
     }
 
     @Override
-    public void updateRecyclerView(List<BuyComingListBean> list) {
-        listAdapter.addData(list);
+    public void updateRecyclerView(BuyComingListBean item) {
+        listAdapter.addData(item.getMoviecomings());
+        headerAdapter.addData(item.getAttention());
     }
 
     @Override
