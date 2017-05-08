@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.blankj.utilcode.utils.SizeUtils;
 import com.dblyy.R;
@@ -27,7 +26,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ClipPa
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -36,13 +34,13 @@ import butterknife.ButterKnife;
 
 public class BuyTicketFragment extends BaseFragment {
 
-    @BindView(R.id.tv_movie)
-    TextView tv_movie;
-    @BindView(R.id.tv_cinema)
-    TextView tv_cinema;
-    @BindView(R.id.magic_indicator_buy)
+    //    @BindView(R.id.tv_movie)
+//    TextView tv_movie;
+//    @BindView(R.id.tv_cinema)
+//    TextView tv_cinema;
+//    @BindView(R.id.magic_indicator_buy)
     MagicIndicator magic_indicator;
-    @BindView(R.id.viewpager)
+    //    @BindView(R.id.viewpager)
     ViewPager viewpager;
 
     private final List<Fragment> fragmentList = new ArrayList<>();
@@ -65,6 +63,9 @@ public class BuyTicketFragment extends BaseFragment {
 
         context = view.getContext();
 
+        magic_indicator = (MagicIndicator) view.findViewById(R.id.magic_indicator_buy);
+        viewpager = (ViewPager) view.findViewById(R.id.viewpager);
+
         return view;
     }
 
@@ -82,11 +83,11 @@ public class BuyTicketFragment extends BaseFragment {
         for (String aTnameArray : nameArray)
             selectedTitleList.add(aTnameArray);
 
-//        for (int i = 0; i < selectedTitleList.size(); i++) {
-//            fragmentList.add(ShowingListFragment.newInstance(1 + ""));
-//        }
-        fragmentList.add(ShowingListFragment.newInstance("0"));
-        fragmentList.add(ComingNewListFragment.newInstance("1"));
+        for (int i = 0; i < selectedTitleList.size(); i++) {
+            fragmentList.add(ComingNewListFragment.newInstance(i + ""));
+        }
+//        fragmentList.add(ShowingListFragment.newInstance("0"));
+//        fragmentList.add(ComingNewListFragment.newInstance("1"));
         FragmentAdapter fAdapter = new FragmentAdapter(this.getChildFragmentManager(), fragmentList);
         viewpager.setAdapter(fAdapter);
         viewpager.setOffscreenPageLimit(2);
@@ -161,5 +162,10 @@ public class BuyTicketFragment extends BaseFragment {
         navigator.setAdapter(nAdapter);
         magic_indicator.setNavigator(navigator);
         ViewPagerHelper.bind(magic_indicator, viewpager);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

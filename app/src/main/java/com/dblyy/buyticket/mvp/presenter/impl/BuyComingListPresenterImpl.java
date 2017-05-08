@@ -59,7 +59,7 @@ public class BuyComingListPresenterImpl implements IBuyComingListPresenter {
                         return null;
                     }
                 })
-                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new HttpSubscriber<ArrayList<BuyComingListBean>>() {
                     @Override
                     public void _onNext(ArrayList<BuyComingListBean> item) {

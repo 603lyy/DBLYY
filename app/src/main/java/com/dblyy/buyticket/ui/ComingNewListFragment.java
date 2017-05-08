@@ -9,15 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.utils.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dblyy.R;
 import com.dblyy.buyticket.adapter.ComingListAdapter;
-import com.dblyy.buyticket.api.BuyTicketAPI;
+import com.dblyy.buyticket.adapter.ComingListHeaderAdapter;
 import com.dblyy.buyticket.mvp.model.bean.BuyComingListBean;
 import com.dblyy.buyticket.mvp.presenter.impl.BuyComingListPresenterImpl;
 import com.dblyy.buyticket.mvp.view.IComingListFragment;
 import com.dblyy.widget.fragment.BaseFragment;
-import com.dblyy.widget.recyclerview.CustomLoadMoreView;
 import com.dblyy.widget.recyclerview.animation.CustomAnimation;
 
 import java.util.ArrayList;
@@ -43,7 +43,7 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
 
     private ComingListAdapter listAdapter;
 
-//    private ComingListHeaderAdapter headerAdapter;
+    private ComingListHeaderAdapter headerAdapter;
 
     private final List<BuyComingListBean> comingList = new ArrayList<>();
 
@@ -92,10 +92,9 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
         //设置RefreshLayout
         //设置RecyclerView
         listAdapter = new ComingListAdapter(new ArrayList<>());
+        headerAdapter = new ComingListHeaderAdapter(new ArrayList<>());
         listAdapter.openLoadAnimation(new CustomAnimation());
-        listAdapter.setAutoLoadMoreSize(BuyTicketAPI.LIMIT);//加载更多的触发条件
-        listAdapter.setOnLoadMoreListener(this, recycler_view);//加载更多回调监听
-        listAdapter.setLoadMoreView(new CustomLoadMoreView());
+        headerAdapter.openLoadAnimation(new CustomAnimation());
 
         recycler_view.setLayoutManager(new LinearLayoutManager(context));
         recycler_view.setAdapter(listAdapter);
@@ -104,16 +103,12 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     @Override
     public void updateRecyclerView(List<BuyComingListBean> list) {
         listAdapter.addData(list);
-        if (list.size() < BuyTicketAPI.LIMIT) {//分页数据size比每页数据的limit小，说明已全部加载数据
-            listAdapter.loadMoreEnd();
-        } else {
-            listAdapter.loadMoreComplete();
-        }
     }
 
     @Override
     public void showError(String message) {
-
+        listAdapter.loadMoreFail();//在加载失败的时候调用showLoadMoreFailedView()就能显示加载失败的footer了，点击footer会重新加载
+        ToastUtils.showShortToast(message);
     }
 
     @Override
