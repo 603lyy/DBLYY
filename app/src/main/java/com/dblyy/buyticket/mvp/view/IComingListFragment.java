@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface IComingListFragment extends IErrorView {
 
-    void updateRecyclerView(BuyComingListBean item);//更新列表
+    void updateRecyclerViewHeader(List<BuyComingListBean.AttentionBean> list);//更新头部列表
 
     void updateRecyclerViewMain(List<BuyComingListItemBean> list);//更新主列表
 }

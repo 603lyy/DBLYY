@@ -109,9 +109,8 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
     }
 
     @Override
-    public void updateRecyclerView(BuyComingListBean item) {
-//        listAdapter.addData(item.getMoviecomings());
-        headerAdapter.addData(item.getAttention());
+    public void updateRecyclerViewHeader(List<BuyComingListBean.AttentionBean> list) {
+        headerAdapter.addData(list);
     }
 
     @Override

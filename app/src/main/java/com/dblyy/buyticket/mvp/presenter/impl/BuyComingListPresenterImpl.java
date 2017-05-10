@@ -48,12 +48,11 @@ public class BuyComingListPresenterImpl implements IBuyComingListPresenter {
                         return Flowable.just(bean);
                     }
                 })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new HttpSubscriber<BuyComingListBean>() {
+                .map(new Function<BuyComingListBean, BuyComingListBean>() {
                     @Override
-                    public void _onNext(BuyComingListBean item) {
+                    public BuyComingListBean apply(@NonNull BuyComingListBean comingListBean) throws Exception {
                         int month = 0, day = 0;
-                        List<BuyComingListBean.MoviecomingsBean> list = item.getMoviecomings();
+                        List<BuyComingListBean.MoviecomingsBean> list = comingListBean.getMoviecomings();
                         List<BuyComingListItemBean> itemList = new ArrayList<BuyComingListItemBean>();
                         for (int i = 0; i < list.size(); i++) {
                             if (month != list.get(i).getRMonth() || day != list.get(i).getRDay()) {
@@ -66,8 +65,16 @@ public class BuyComingListPresenterImpl implements IBuyComingListPresenter {
                                 itemList.add(new BuyComingListItemBean(list.get(i)));
                             }
                         }
-                        view.updateRecyclerView(item);
-                        view.updateRecyclerViewMain(itemList);
+                        comingListBean.setItemBeenList(itemList);
+                        return comingListBean;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new HttpSubscriber<BuyComingListBean>() {
+                    @Override
+                    public void _onNext(BuyComingListBean item) {
+                        view.updateRecyclerViewHeader(item.getAttention());
+                        view.updateRecyclerViewMain(item.getItemBeenList());
                     }
 
                     @Override

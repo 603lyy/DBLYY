@@ -8,6 +8,15 @@ import java.util.List;
 
 public class BuyComingListBean {
 
+    private List<BuyComingListItemBean> itemBeenList;
+
+    public List<BuyComingListItemBean> getItemBeenList() {
+        return itemBeenList;
+    }
+
+    public void setItemBeenList(List<BuyComingListItemBean> itemBeenList) {
+        this.itemBeenList = itemBeenList;
+    }
 
     /**
      * actor1 : 黄磊
