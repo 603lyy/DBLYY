@@ -1,8 +1,6 @@
 package com.dblyy.util.global;
 
 /**
- * author: liminjie
- * date: 2017/2/27
  * desc: Constants用于保存全局变量
  */
 

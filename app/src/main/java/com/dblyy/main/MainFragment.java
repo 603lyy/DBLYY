@@ -2,6 +2,7 @@ package com.dblyy.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,8 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.utils.ToastUtils;
 import com.dblyy.R;
+import com.dblyy.buyticket.ui.BuyTicketFragment;
 import com.dblyy.discover.DiscoverFragment;
-import com.dblyy.hotshowing.HotShowingFragment;
 import com.dblyy.user.UserFragment;
 import com.dblyy.widget.fragment.BaseFragment;
 
@@ -24,10 +25,8 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerInd
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.CommonPagerTitleView;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.yokeyword.fragmentation.SupportFragment;
-import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  * 作者：linyaye on 2017/4/11 15:17
@@ -37,10 +36,9 @@ public class MainFragment extends BaseFragment {
 
     private static final String KEY = "key";
 
-    @BindView(R.id.layout_container)
-    FrameLayout layoutContainer;
-
-    @BindView(R.id.magic_indicator)
+//    @BindView(R.id.layout_container)
+    FrameLayout layout_container;
+//    @BindView(R.id.magic_indicator)
     MagicIndicator indicator;
 
     private final int[] normalResId = new int[]{
@@ -85,6 +83,8 @@ public class MainFragment extends BaseFragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.fragment_main, container, false);
+        indicator = (MagicIndicator) view.findViewById(R.id.magic_indicator);
+        layout_container = (FrameLayout) view.findViewById(R.id.layout_container);
 
         ButterKnife.bind(this, view);
 
@@ -97,8 +97,10 @@ public class MainFragment extends BaseFragment {
 
     private void initView() {
 
+        CommonNavigator navigator = new CommonNavigator(context);
+
         //Fragment相关
-        fragments[0] = HotShowingFragment.newInstance();
+        fragments[0] = BuyTicketFragment.newInstance();
         fragments[1] = DiscoverFragment.newInstance();
         fragments[2] = UserFragment.newInstance();
 
@@ -109,7 +111,6 @@ public class MainFragment extends BaseFragment {
 
         current = 0;
 
-        CommonNavigator navigator = new CommonNavigator(context);
         navigator.setAdjustMode(true);
         navigator.setFollowTouch(true);
         navigator.setAdapter(new CommonNavigatorAdapter() {
@@ -130,13 +131,13 @@ public class MainFragment extends BaseFragment {
                     @Override
                     public void onSelected(int i, int i1) {
                         tab_btn.setBackgroundResource(pressedResId[i]);
-                        tab_name.setTextColor(getResources().getColor(R.color.color_primary_text));
+                        tab_name.setTextColor(ContextCompat.getColor(context, R.color.color_primary_text));
                     }
 
                     @Override
                     public void onDeselected(int i, int i1) {
                         tab_btn.setBackgroundResource(normalResId[i]);
-                        tab_name.setTextColor(getResources().getColor(R.color.color_secondary_text));
+                        tab_name.setTextColor(ContextCompat.getColor(context, R.color.color_secondary_text));
                     }
 
                     @Override
@@ -168,18 +169,9 @@ public class MainFragment extends BaseFragment {
                 return null;
             }
         });
+
         indicator.setNavigator(navigator);
         fragmentContainerHelper.attachMagicIndicator(indicator);
-    }
-
-    @Override
-    protected FragmentAnimator onCreateFragmentAnimator() {
-        return super.onCreateFragmentAnimator();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 
     @Override

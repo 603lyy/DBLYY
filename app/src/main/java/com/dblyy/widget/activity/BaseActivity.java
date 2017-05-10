@@ -11,8 +11,6 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import me.yokeyword.fragmentation.SupportActivity;
 
 /**
- * author: liminjie
- * date: 2017/2/27
  * desc: BaseActivity基类
  */
 

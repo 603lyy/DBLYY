@@ -17,15 +17,13 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * author: LMJ
  * date: 2016/9/1
  */
 public class RetrofitHelper {
 
-    public static final String BASE_USER_URL = "http://api.douban.com/v2/movie/";
-    private static final String BASE_EXPLORE_URL = "http://c.m.163.com";
-    private static final String BASE_LIVE_URL = "http://api.maxjia.com";
-    private static final String BASE_PANDA_URL = "http://www.panda.tv";
+    //公共域名
+    public static final String BASE_URL = "http://api-m.mtime.cn/";
+
     private static final Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = chain -> {
 
         Request request = chain.request();
@@ -51,7 +49,7 @@ public class RetrofitHelper {
                     .header("Cache-Control", "public, max-age=" + maxAge)//设置缓存超时时间
                     .build();
         } else {
-            int maxStale = 60 * 60;//无网络时，设置超时为4周
+            int maxStale = 24 * 60 * 60;//无网络时，设置超时为4周
             response = response.newBuilder()
                     .removeHeader("Pragma")
                     .header("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
@@ -59,17 +57,15 @@ public class RetrofitHelper {
         }
         return response;
     };
-    private static Retrofit explore = null;
-    private static Retrofit live = null;
-    private static Retrofit user = null;
-    private static Retrofit panda = null;
 
-    public static Retrofit getExploreHelper() {
-        if (explore == null) {
+    private static Retrofit retrofit = null;
+
+    public static Retrofit getRetrofitHelper() {
+        if (retrofit == null) {
             try {
                 synchronized (RetrofitHelper.class) {
-                    if (explore == null) {
-                        File httpCacheDirectory = new File(App.getContext().getCacheDir(), "exploreCache");
+                    if (retrofit == null) {
+                        File httpCacheDirectory = new File(App.getContext().getCacheDir(), "mainCache");
                         Cache cache = new Cache(httpCacheDirectory, 10 * 1024 * 1024);//缓存10MB
                         OkHttpClient.Builder httpBuidler = new OkHttpClient().newBuilder();
                         httpBuidler.cache(cache)
@@ -80,9 +76,9 @@ public class RetrofitHelper {
 //                                .addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)//离线缓存
                                 .addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR);
 
-                        explore = new Retrofit.Builder()
+                        retrofit = new Retrofit.Builder()
                                 .client(httpBuidler.build())
-                                .baseUrl(BASE_EXPLORE_URL)
+                                .baseUrl(BASE_URL)
                                 .addConverterFactory(GsonConverterFactory.create())
                                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                                 .build();
@@ -92,50 +88,6 @@ public class RetrofitHelper {
                 e.printStackTrace();
             }
         }
-        return explore;
+        return retrofit;
     }
-
-    public static Retrofit getLiveHelper() {
-        if (live == null) {
-            synchronized (RetrofitHelper.class) {
-                if (live == null) {
-                    live = new Retrofit.Builder()
-                            .baseUrl(BASE_LIVE_URL)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                            .build();
-                }
-            }
-        }
-        return live;
-    }
-
-    public static Retrofit getPandaHelper() {
-        if (panda == null) {
-            synchronized (RetrofitHelper.class) {
-                panda = new Retrofit.Builder()
-                        .client(new OkHttpClient.Builder().connectTimeout(5, TimeUnit.SECONDS).build())
-                        .baseUrl(BASE_PANDA_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                        .build();
-            }
-        }
-        return panda;
-    }
-
-//    public static <T> FlowableTransformer<LiveBaseBean<T>, T> handleLiveResult() {
-//        return upstream -> upstream.flatMap(new Function<LiveBaseBean<T>, Publisher<T>>() {
-//            @Override
-//            public Publisher<T> apply(final LiveBaseBean<T> baseBean) throws Exception {
-//                return subscriber -> {
-//                    if (baseBean.getStatus().equals("ok")) {
-//                        subscriber.onNext(baseBean.getResult());
-//                    } else {
-//                        subscriber.onError(new RetrofitException(baseBean.getMsg()));
-//                    }
-//                };
-//            }
-//        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-//    }
 }

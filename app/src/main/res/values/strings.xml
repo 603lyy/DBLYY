@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DBLYY</string>
+    <string name="app_name">电影</string>
     <!--通用-->
     <string name="progress_loading">正在努力工作，请稍等…</string>
     <string name="explore">发现</string>
@@ -13,6 +13,10 @@
     <string name="loadmore_end">所有数据加载完成</string>
     <string name="loadmore_fail">加载失败，点击重试</string>
 
+    <!--时间戳-->
+    <string name="time_stamp_transform_md_format">MM月dd日</string>
+    <string name="time_stamp_ymd_format">yyyyMMdd</string>
+
     <!--indicator-->
     <string name="hot_showing">热映</string>
     <string name="discover">发现</string>
@@ -24,5 +28,14 @@
 
     <!--购票-->
     <string name="buy_ticket_title_movie">电影</string>
+    <string name="buy_ticket_title_cinema">影院</string>
+    <string name="buy_ticket_show_time">%s上映</string>
+    <string name="buy_ticket_cinema">%1$s家影院上映%2$s场</string>
+    <string name="buy_ticket_cinema_today">今日%s</string>
+    <string name="buy_ticket_is_ticket">购票</string>
+    <string name="buy_ticket_is_unticket">预售</string>
+    <string name="buy_ticket_want_count">人想看-%s</string>
+    <string name="buy_ticket_most_popular">最受关注</string>
+    <string name="buy_ticket_date">%1$s月%2$s日</string>
 
 </resources>

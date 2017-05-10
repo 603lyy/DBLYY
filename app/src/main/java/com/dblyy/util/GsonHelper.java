@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 
 /**
- * author: liminjie
- * date: 2017/2/27
  * desc: GsonHelper工具类
  */
 

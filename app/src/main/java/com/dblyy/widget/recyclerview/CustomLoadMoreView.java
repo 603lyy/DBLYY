@@ -4,7 +4,6 @@ import com.chad.library.adapter.base.loadmore.LoadMoreView;
 import com.dblyy.R;
 
 /**
- * author: liminjie
  * date: 2017/2/27
  * desc: CustomLoadMoreView管理列表底部View
  */

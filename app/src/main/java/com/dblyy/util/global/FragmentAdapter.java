@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * author: liminjie
- * date: 2017/2/27
  * desc: FragmentAdapter用于管理FragmentViewPager
  */
 

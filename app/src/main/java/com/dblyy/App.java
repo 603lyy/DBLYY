@@ -41,5 +41,4 @@ public class App extends Application {
         spUtils = new SPUtils(getString(R.string.app_name));
         RxPaparazzo.register(this);
     }
-
 }
