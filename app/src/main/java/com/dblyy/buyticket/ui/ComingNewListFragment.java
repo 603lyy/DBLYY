@@ -15,6 +15,7 @@ import com.dblyy.R;
 import com.dblyy.buyticket.adapter.ComingListAdapter;
 import com.dblyy.buyticket.adapter.ComingListHeaderAdapter;
 import com.dblyy.buyticket.mvp.model.bean.BuyComingListBean;
+import com.dblyy.buyticket.mvp.model.bean.BuyComingListItemBean;
 import com.dblyy.buyticket.mvp.presenter.impl.BuyComingListPresenterImpl;
 import com.dblyy.buyticket.mvp.view.IComingListFragment;
 import com.dblyy.widget.fragment.BaseFragment;
@@ -99,7 +100,7 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
 
         View header = getActivity().getLayoutInflater().inflate(R.layout.header_buy_ticket_coming, (ViewGroup) recycler_view.getParent(), false);
         recycler_view_header = (RecyclerView) header.findViewById(R.id.recycler_view_header);
-        recycler_view_header.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
+        recycler_view_header.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         recycler_view_header.setAdapter(headerAdapter);
         listAdapter.addHeaderView(header);
 
@@ -109,8 +110,13 @@ public class ComingNewListFragment extends BaseFragment implements IComingListFr
 
     @Override
     public void updateRecyclerView(BuyComingListBean item) {
-        listAdapter.addData(item.getMoviecomings());
+//        listAdapter.addData(item.getMoviecomings());
         headerAdapter.addData(item.getAttention());
+    }
+
+    @Override
+    public void updateRecyclerViewMain(List<BuyComingListItemBean> list) {
+        listAdapter.addData(list);
     }
 
     @Override

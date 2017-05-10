@@ -5,19 +5,23 @@
     android:orientation="vertical">
 
     <ImageView
-        android:contentDescription="最受关注电影图片"
         android:id="@+id/iv_movie_header"
         android:layout_width="110dp"
         android:layout_height="150dp"
-        android:layout_margin="@dimen/margin_little_small" />
+        android:layout_margin="@dimen/margin_little_small"
+        android:contentDescription="最受关注电影图片" />
 
     <TextView
         android:id="@+id/tv_title_header"
         style="@style/CommonTextView"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:padding="@dimen/padding_little_small"
         android:textSize="14dp" />
 
     <TextView
         android:id="@+id/tv_cri_header"
-        style="@style/CommonTextView"/>
+        style="@style/CommonTextView" />
 
 </LinearLayout>
