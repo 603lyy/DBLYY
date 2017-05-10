@@ -15,20 +15,25 @@ import java.util.List;
  * 作者：linyaye on 2017/5/3 10:19
  */
 
-public class ComingListAdapter extends BaseSectionQuickAdapter<BuyComingListItemBean,BaseViewHolder> {
+public class ComingListAdapter extends BaseSectionQuickAdapter<BuyComingListItemBean, BaseViewHolder> {
+
+    public static final int SECTION_HEADER = 1;
+    public static final int NOT_SECTION_HEADER = 2;
 
     public ComingListAdapter(List<BuyComingListItemBean> data) {
         super(R.layout.item_buy_ticket_coming, R.layout.item_buy_ticket_coming_section_header, data);
     }
 
     @Override
-    protected void convertHead(BaseViewHolder helper, BuyComingListItemBean bean) {
-        helper.setText(R.id.tv_date, bean.header);
+    protected void convertHead(BaseViewHolder holder, BuyComingListItemBean bean) {
+        holder.setText(R.id.tv_date, bean.header);
+        holder.itemView.setTag(SECTION_HEADER);
     }
 
     @Override
     protected void convert(BaseViewHolder holder, BuyComingListItemBean bean) {
 
+        holder.itemView.setTag(NOT_SECTION_HEADER);
         BuyComingListBean.MoviecomingsBean item = (BuyComingListBean.MoviecomingsBean) bean.t;
 
         Glide.with(mContext)
